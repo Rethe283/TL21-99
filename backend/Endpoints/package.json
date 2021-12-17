@@ -1,0 +1,11 @@
+{
+  "name": "soft_eng_99",
+  "version": "1.0.0",
+  "description": "Endpoints For Software Engineering Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ioannis Fardelas",
+  "license": "ISC"
+}
