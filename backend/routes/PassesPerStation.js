@@ -23,17 +23,24 @@ router.get("/:stationRef/:date_from/:date_to", (req, res) => {
 
     return { Station };
   });
-  const PassList = stationRefPasses.map((pass) => {
+  const PassList = stationRefPasses.map((pass, index) => {
     const { passID, timestamp, vehicleRef, hn, p, charge } = pass;
     PassTimeStamp = date_format(timestamp);
-    VevicleID = vehicleRef;
+    PassIndex = index + 1;
+    VehicleID = vehicleRef;
     TagProvider = hn;
     PassType = p;
+    if (p === "home") {
+      PassType = "home";
+    } else {
+      Passtype = "visitor";
+    }
     PassCharge = charge;
     return {
+      PassIndex,
       passID,
       PassTimeStamp,
-      VevicleID,
+      VehicleID,
       TagProvider,
       PassType,
       PassCharge,
