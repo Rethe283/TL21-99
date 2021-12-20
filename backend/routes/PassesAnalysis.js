@@ -5,10 +5,11 @@ const fs = require("fs");
 const { Visitor } = require("../models/visitor");
 let raw_data = fs.readFileSync("./Data/passes.json");
 let passes = JSON.parse(raw_data);
+const time_logger = require("./time_logger");
 
-router.get("/:op1_ID/:op2_ID/:date_from/:date_to", (req, res) => {
+router.get("/:op1_ID/:op2_ID/:date_from/:date_to", time_logger, (req, res) => {
   const { op1_ID, op2_ID, date_from, date_to } = req.params;
-  RequestTimestamp = date_format(new Date());
+
   const PassesAnal = passes.filter(
     (pass) =>
       op1_ID === pass.stationRef.substring(0, 2) &&
@@ -16,8 +17,6 @@ router.get("/:op1_ID/:op2_ID/:date_from/:date_to", (req, res) => {
       date_greater_or_equal(pass.timestamp, date_from) &&
       date_greater_or_equal(date_to, pass.timestamp)
   );
-  PeriodFrom = date_format(date_from);
-  PeriodTo = date_format(date_to);
 
   const PassesList = PassesAnal.map((pass, index) => {
     const { passID, timestamp, vehicleRef, hn, charge } = pass;
@@ -37,7 +36,7 @@ router.get("/:op1_ID/:op2_ID/:date_from/:date_to", (req, res) => {
     };
   });
   const NumberOfPasses = Object.keys(PassesAnal).length;
-  let newtype = new Visitor(
+  let Visit = new Visitor(
     op1_ID,
     op2_ID,
     RequestTimestamp,
@@ -47,7 +46,7 @@ router.get("/:op1_ID/:op2_ID/:date_from/:date_to", (req, res) => {
     PassesList
   );
 
-  res.status(200).send(newtype);
+  res.status(200).send(Visit);
 });
 
 module.exports = router;
