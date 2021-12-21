@@ -6,24 +6,24 @@ const fs = require("fs");
 let raw_data = fs.readFileSync("./Data/passes.json");
 let passes = JSON.parse(raw_data);
 const converter = require("json-2-csv");
-router.get("/:stationID/:date_from/:date_to", time_logger, (req, res) => {
-  const { stationID, date_from, date_to } = req.params;
-  const StationOperator = stationID.substring(0, 2);
+router.get("/:stationRef/:date_from/:date_to", time_logger, (req, res) => {
+  const { stationRef, date_from, date_to } = req.params;
+  const StationOperator = stationRef.substring(0, 2);
 
-  const stationIDPasses = passes.filter(
+  const stationRefPasses = passes.filter(
     (pass) =>
-      pass.stationID === stationID &&
+      pass.stationRef === stationRef &&
       date_greater_or_equal(pass.timestamp, PeriodFrom) &&
       date_greater_or_equal(PeriodTo, pass.timestamp)
   );
 
-  const reducedPass = stationIDPasses.map((pass) => {
-    const { stationID } = pass;
-    Station = stationID;
+  const reducedPass = stationRefPasses.map((pass) => {
+    const { stationRef } = pass;
+    Station = stationRef;
 
     return { Station };
   });
-  const PassList = stationIDPasses.map((pass, index) => {
+  const PassList = stationRefPasses.map((pass, index) => {
     const { passID, timestamp, vehicleRef, hn, p, charge } = pass;
     PassTimeStamp = date_format(timestamp);
     PassIndex = index + 1;
