@@ -14,7 +14,9 @@ const time_logger = (req, res, next) => {
   //   tempfrom = req.params.date_from;
   //   req.params.date_to;
   // } ,maybe?
-  const a = "19950524114000";
+  // const a = "1995524114000";
+  // const b = weird_date_format(a);
+  // const c = new Date(Number(b));
   PeriodFrom = date_format(req.params.date_from);
   PeriodTo = date_format(req.params.date_to);
   // PeriodFrom = weird_date_format(a);
