@@ -16,8 +16,8 @@ router.get("/:op_ID/:date_from/:date_to", time_logger, (req, res) => {
     .filter(
       (pass) =>
         op_ID === pass.stationRef.substring(0, 2) &&
-        date_greater_or_equal(pass.timestamp, date_from) &&
-        date_greater_or_equal(date_to, pass.timestamp) &&
+        date_greater_or_equal(pass.timestamp, PeriodFrom) &&
+        date_greater_or_equal(PeriodTo, pass.timestamp) &&
         pass.p === "away"
     )
     .map((pass) => {

@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { date_format, date_greater_or_equal } = require("./date_functions");
 const fs = require("fs");
-const { Visitor } = require("../models/visitor");
 let raw_data = fs.readFileSync("./Data/passes.json");
 let passes = JSON.parse(raw_data);
 const converter = require("json-2-csv");
@@ -16,8 +15,8 @@ router.get("/:op1_ID/:op2_ID/:date_from/:date_to", time_logger, (req, res) => {
       (pass) =>
         op1_ID === pass.stationRef.substring(0, 2) &&
         op2_ID === pass.hn &&
-        date_greater_or_equal(pass.timestamp, date_from) &&
-        date_greater_or_equal(date_to, pass.timestamp)
+        date_greater_or_equal(pass.timestamp, PeriodFrom) &&
+        date_greater_or_equal(PeriodTo, pass.timestamp)
     )
     .map((pass) => {
       const { charge } = pass;

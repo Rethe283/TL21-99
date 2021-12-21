@@ -15,8 +15,8 @@ router.get("/:op1_ID/:op2_ID/:date_from/:date_to", time_logger, (req, res) => {
     (pass) =>
       op1_ID === pass.stationRef.substring(0, 2) &&
       op2_ID === pass.hn &&
-      date_greater_or_equal(pass.timestamp, date_from) &&
-      date_greater_or_equal(date_to, pass.timestamp)
+      date_greater_or_equal(pass.timestamp, PeriodFrom) &&
+      date_greater_or_equal(PeriodTo, pass.timestamp)
   );
 
   const PassesList = PassesAnal.map((pass, index) => {

@@ -7,8 +7,8 @@ const {
 const time_logger = (req, res, next) => {
   RequestTimestamp = date_format(new Date());
 
-  PeriodFrom = date_format(req.params.date_from);
-  PeriodTo = date_format(req.params.date_to);
+  PeriodFrom = weird_date_format(req.params.date_from);
+  PeriodTo = weird_date_format(req.params.date_to);
 
   // console.log(RequestTimestamp, PeriodFrom, PeriodTo);
   next();
