@@ -5,7 +5,7 @@ const time_logger = require("./time_logger");
 const fs = require("fs");
 let raw_data = fs.readFileSync("./Data/passes.json");
 let passes = JSON.parse(raw_data);
-
+const converter = require("json-2-csv");
 router.get("/:stationRef/:date_from/:date_to", time_logger, (req, res) => {
   console.log(req.params);
   const { stationRef, date_from, date_to } = req.params;
@@ -48,7 +48,7 @@ router.get("/:stationRef/:date_from/:date_to", time_logger, (req, res) => {
 
   const NumberOfPasses = Object.keys(reducedPass).length;
 
-  const megaJSON = {
+  const outJson = {
     Station,
     StationOperator,
     PeriodFrom,
@@ -57,7 +57,16 @@ router.get("/:stationRef/:date_from/:date_to", time_logger, (req, res) => {
     RequestTimestamp,
     PassList,
   };
-  res.status(200).json(megaJSON);
+  if (req.query.format === "csv") {
+    converter.json2csv(outJson, function (err, csv) {
+      if (err) {
+        throw err;
+      }
+      return res.send(csv);
+    });
+  } else {
+    res.status(200).send(outJson);
+  }
 });
 
 module.exports = router;

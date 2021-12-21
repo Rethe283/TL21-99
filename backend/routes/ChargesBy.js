@@ -7,7 +7,8 @@ let passes = JSON.parse(raw_data);
 const time_logger = require("./time_logger");
 const _ = require("lodash");
 const { PPOList } = require("lodash");
-//const { Parser } = require("json2csv");
+const converter = require("json-2-csv");
+
 router.get("/:op_ID/:date_from/:date_to", time_logger, (req, res) => {
   const { op_ID, date_from, date_to } = req.params;
 
@@ -39,14 +40,21 @@ router.get("/:op_ID/:date_from/:date_to", time_logger, (req, res) => {
   });
 
   const NumberOfPasses = Object.keys(VisitsByOperator).length;
-  const ultraJson = {
+  const outJson = {
     op_ID,
     NumberOfPasses,
     PPOList,
   };
-  //
-
-  res.status(200).send(ultraJson);
+  if (req.query.format === "csv") {
+    converter.json2csv(outJson, function (err, csv) {
+      if (err) {
+        throw err;
+      }
+      return res.send(csv);
+    });
+  } else {
+    res.status(200).send(outJson);
+  }
 });
 
 module.exports = router;

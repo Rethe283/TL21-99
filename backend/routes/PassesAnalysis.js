@@ -6,6 +6,7 @@ const { Visitor } = require("../models/visitor");
 let raw_data = fs.readFileSync("./Data/passes.json");
 let passes = JSON.parse(raw_data);
 const time_logger = require("./time_logger");
+const converter = require("json-2-csv");
 
 router.get("/:op1_ID/:op2_ID/:date_from/:date_to", time_logger, (req, res) => {
   const { op1_ID, op2_ID, date_from, date_to } = req.params;
@@ -36,7 +37,7 @@ router.get("/:op1_ID/:op2_ID/:date_from/:date_to", time_logger, (req, res) => {
     };
   });
   const NumberOfPasses = Object.keys(PassesAnal).length;
-  let Visit = new Visitor(
+  let outJson = new Visitor(
     op1_ID,
     op2_ID,
     RequestTimestamp,
@@ -46,7 +47,16 @@ router.get("/:op1_ID/:op2_ID/:date_from/:date_to", time_logger, (req, res) => {
     PassesList
   );
 
-  res.status(200).send(Visit);
+  if (req.query.format === "csv") {
+    converter.json2csv(outJson, function (err, csv) {
+      if (err) {
+        throw err;
+      }
+      return res.send(csv);
+    });
+  } else {
+    res.status(200).send(outJson);
+  }
 });
 
 module.exports = router;
