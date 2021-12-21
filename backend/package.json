@@ -9,6 +9,12 @@
   "author": "Ioannis Fardelas",
   "license": "ISC",
   "dependencies": {
+    "csv-2-json": "^0.1.6",
+    "csvtojson": "^2.0.10",
+    "flat": "^5.0.2",
+    "json-2-csv": "^3.15.0",
+    "json2csv": "^5.0.6",
+    "jsontocsv": "^0.3.0",
     "lodash": "^4.17.21"
   }
 }
