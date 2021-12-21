@@ -7,7 +7,7 @@ let passes = JSON.parse(raw_data);
 const time_logger = require("./time_logger");
 const _ = require("lodash");
 const { PPOList } = require("lodash");
-
+//const { Parser } = require("json2csv");
 router.get("/:op_ID/:date_from/:date_to", time_logger, (req, res) => {
   const { op_ID, date_from, date_to } = req.params;
 
@@ -33,8 +33,8 @@ router.get("/:op_ID/:date_from/:date_to", time_logger, (req, res) => {
     const sum = byVisitingOperator[key].reduce((acc, it) => acc + it.Charge, 0);
     return {
       VisitingOperator: key,
-      CountOfPasses: count,
-      ChargeSum: sum,
+      CountOfPasses: count.toFixed(0),
+      ChargeSum: sum.toFixed(2),
     };
   });
 
@@ -44,6 +44,7 @@ router.get("/:op_ID/:date_from/:date_to", time_logger, (req, res) => {
     NumberOfPasses,
     PPOList,
   };
+  //
 
   res.status(200).send(ultraJson);
 });
