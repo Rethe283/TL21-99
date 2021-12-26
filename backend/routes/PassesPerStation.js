@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { date_format, date_greater_or_equal } = require("./date_functions");
+const {date_format, date_greater_or_equal} = require("./date_functions")
 const fs = require("fs");
 let raw_data = fs.readFileSync("./Data/passes.json");
 let passes = JSON.parse(raw_data);

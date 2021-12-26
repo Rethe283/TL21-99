@@ -1,11 +1,13 @@
 {
-  "name": "soft_eng_99",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Endpoints For Software Engineering Project",
+  "description": "Περιεχόμενα:",
   "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ioannis Fardelas",
+  "author": "",
   "license": "ISC"
 }
