@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 const { date_format, date_greater_or_equal } = require("./date_functions");
@@ -11,14 +12,15 @@ const converter = require("json-2-csv");
 router.get("/:op1_ID/:op2_ID/:date_from/:date_to", time_logger, (req, res) => {
   const { op1_ID, op2_ID, date_from, date_to } = req.params;
 
-  const PassesAnal = passes.filter(
-    (pass) =>
+  // convert to json
+  const PassesAnal = passes.filter((pass) =>
       op1_ID === pass.stationRef.substring(0, 2) &&
       op2_ID === pass.hn &&
       date_greater_or_equal(pass.timestamp, PeriodFrom) &&
       date_greater_or_equal(PeriodTo, pass.timestamp)
   );
 
+  // filter to columns
   const PassesList = PassesAnal.map((pass, index) => {
     const { passID, timestamp, vehicleRef, hn, charge } = pass;
     PassIndex = index + 1;
@@ -36,6 +38,7 @@ router.get("/:op1_ID/:op2_ID/:date_from/:date_to", time_logger, (req, res) => {
       Charge,
     };
   });
+
   const NumberOfPasses = Object.keys(PassesAnal).length;
   let outJson = new Visitor(
     op1_ID,

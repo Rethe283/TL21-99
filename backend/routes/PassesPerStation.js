@@ -6,6 +6,7 @@ const fs = require("fs");
 let raw_data = fs.readFileSync("./Data/passes.json");
 let passes = JSON.parse(raw_data);
 const converter = require("json-2-csv");
+
 router.get("/:stationRef/:date_from/:date_to", time_logger, (req, res) => {
   const { stationRef, date_from, date_to } = req.params;
   const StationOperator = stationRef.substring(0, 2);
@@ -17,33 +18,37 @@ router.get("/:stationRef/:date_from/:date_to", time_logger, (req, res) => {
       date_greater_or_equal(PeriodTo, pass.timestamp)
   );
 
-  const reducedPass = stationRefPasses.map((pass) => {
-    const { stationRef } = pass;
-    Station = stationRef;
+  const reducedPass = stationRefPasses.map(
+    (pass) => {
+      const { stationRef } = pass;
+      Station = stationRef;
 
-    return { Station };
-  });
-  const PassList = stationRefPasses.map((pass, index) => {
-    const { passID, timestamp, vehicleRef, hn, p, charge } = pass;
-    PassTimeStamp = date_format(timestamp);
-    PassIndex = index + 1;
-    VehicleID = vehicleRef;
-    TagProvider = hn;
-    PassType = p;
-    if (p === "away") {
-      PassType = "visitor";
+      return { Station };
+    });
+
+  const PassList = stationRefPasses.map(
+    (pass, index) => {
+      const { passID, timestamp, vehicleRef, hn, p, charge } = pass;
+      PassTimeStamp = date_format(timestamp);
+      PassIndex = index + 1;
+      VehicleID = vehicleRef;
+      TagProvider = hn;
+      PassType = p;
+      if (p === "away") {
+        PassType = "visitor";
+      }
+      PassCharge = charge;
+      return {
+        PassIndex,
+        passID,
+        PassTimeStamp,
+        VehicleID,
+        TagProvider,
+        PassType,
+        PassCharge,
+      };
     }
-    PassCharge = charge;
-    return {
-      PassIndex,
-      passID,
-      PassTimeStamp,
-      VehicleID,
-      TagProvider,
-      PassType,
-      PassCharge,
-    };
-  });
+  );
 
   const NumberOfPasses = Object.keys(reducedPass).length;
 
@@ -56,6 +61,7 @@ router.get("/:stationRef/:date_from/:date_to", time_logger, (req, res) => {
     RequestTimestamp,
     PassList,
   };
+  
   if (req.query.format === "csv") {
     converter.json2csv(outJson, function (err, csv) {
       if (err) {
