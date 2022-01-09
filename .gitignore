@@ -1,0 +1,8 @@
+desktop.ini
+node_modules/
+*.zip
+*.log
+*.logs
+.env
+*error.log*
+*debug.log*

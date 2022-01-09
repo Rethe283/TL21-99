@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 const { date_format, date_greater_or_equal } = require("./date_functions");
@@ -21,6 +22,7 @@ router.get(
         date_greater_or_equal(PeriodTo, pass.timestamp)
     );
 
+<<<<<<< HEAD
     const PassesList = PassesAnal.map((pass, index) => {
       const { passID, timestamp, vehicleRef, hn, charge } = pass;
       PassIndex = index + 1;
@@ -37,6 +39,52 @@ router.get(
         TagProvider,
         Charge,
       };
+=======
+  // convert to json
+  const PassesAnal = passes.filter((pass) =>
+      op1_ID === pass.stationRef.substring(0, 2) &&
+      op2_ID === pass.hn &&
+      date_greater_or_equal(pass.timestamp, PeriodFrom) &&
+      date_greater_or_equal(PeriodTo, pass.timestamp)
+  );
+
+  // filter to columns
+  const PassesList = PassesAnal.map((pass, index) => {
+    const { passID, timestamp, vehicleRef, hn, charge } = pass;
+    PassIndex = index + 1;
+    PassTimeStamp = date_format(timestamp);
+    VehicleID = vehicleRef;
+    TagProvider = hn;
+
+    Charge = charge;
+    return {
+      PassIndex,
+      passID,
+      PassTimeStamp,
+      VehicleID,
+      TagProvider,
+      Charge,
+    };
+  });
+
+  const NumberOfPasses = Object.keys(PassesAnal).length;
+  let outJson = new Visitor(
+    op1_ID,
+    op2_ID,
+    RequestTimestamp,
+    PeriodFrom,
+    PeriodTo,
+    NumberOfPasses,
+    PassesList
+  );
+
+  if (req.query.format === "csv") {
+    converter.json2csv(outJson, function (err, csv) {
+      if (err) {
+        throw err;
+      }
+      return res.send(csv);
+>>>>>>> 6ce416bae134625064bb155ef29eac9070d87eb5
     });
     const NumberOfPasses = Object.keys(PassesAnal).length;
     let outJson = new Visitor(
