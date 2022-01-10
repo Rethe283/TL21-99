@@ -4,10 +4,10 @@ const mongoose = require('mongoose')
 
 router.get('/', (req, res) => {
     if (mongoose.connection.readyState === 0){
-        res.send({"status":"failed", "dbconnection":"disconnected"})
+        res.status(500).send({"status":"failed", "dbconnection":"disconnected"})
     }
     else if (mongoose.connection.readyState === 1){
-        res.send({"status":"OK", "dbconnection":"connected"})
+        res.status(200).send({"status":"OK", "dbconnection":"connected"})
     }
     else if (mongoose.connection.readyState === 2){
         res.send({"status":"failed", "dbconnection":"connecting"})
