@@ -9,11 +9,9 @@
   "author": "tl21-99",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
-    
-
     "csv-2-json": "^0.1.6",
     "csvtojson": "^2.0.10",
+    "express": "^4.16.4",
     "flat": "^5.0.2",
     "json-2-csv": "^3.15.0",
     "json2csv": "^5.0.6",
@@ -21,10 +19,9 @@
     "lodash": "^4.17.21",
     "mongodb": "^4.2.2",
     "mongoose": "^6.1.5"
-    
   },
   "devDependencies": {
-    "nodemon": "2.0.15",
-    "dotenv": "8.6.0"
+    "dotenv": "8.6.0",
+    "nodemon": "2.0.15"
   }
 }
