@@ -15,7 +15,7 @@ const resetpasses = require("./routes/admin/resetpasses")
 const resetstations = require("./routes/admin/resetstations")
 const resetvehicles = require("./routes/admin/resetvehicles")
 
-// app.use("/interoperability/api/ChargesBy", ChargesBy);
+app.use("/interoperability/api/ChargesBy", ChargesBy);
 app.use("/interoperability/api/PassesAnalysis", PassesAnalysis);
 app.use("/interoperability/api/PassesPerStation", PassesPerStation);
 app.use("/interoperability/api/PassesCost", PassesCost);
