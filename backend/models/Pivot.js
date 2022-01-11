@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const pivotSchema = new mongoose.Schema(
   {
-    Count_of_v: String,
+    'Count of v': String,
     p: String,
     field3: String,
     field4: String

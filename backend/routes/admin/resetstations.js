@@ -1,8 +1,9 @@
 const express = require("express")
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send({msg: 'im in resetstations'})
+router.post('/', (req, res) => {
+
+    res.status(200).send({"status":"OK"})
 })
 
 module.exports = router
