@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect("mongodb://127.0.0.1:27017/softeng21-99");
+console.log("connected to database");
 
 const Passes = new mongoose.Schema(
   {
