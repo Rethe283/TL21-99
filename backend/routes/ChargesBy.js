@@ -36,10 +36,11 @@ router.get(
         (acc, it) => acc + it.Charge,
         0
       );
+
       return {
         VisitingOperator: key,
-        CountOfPasses: count.toFixed(0),
-        ChargeSum: sum.toFixed(2),
+        CountOfPasses: Number(count.toFixed(0)),
+        ChargeSum: Number(sum.toFixed(2)),
       };
     });
 

@@ -4,7 +4,6 @@ const { date_format, date_greater_or_equal } = require("./date_functions");
 const time_logger = require("./time_logger");
 const passes_model = require("../models/passes_model.js");
 const converter = require("json-2-csv");
-
 router.get(
   "/:stationRef/:date_from/:date_to",
   time_logger,
@@ -25,7 +24,6 @@ router.get(
 
       return { Station };
     });
-    
     const PassList = stationRefPasses.map((pass, index) => {
       const { passID, timestamp, vehicleRef, hn, p, charge } = pass;
       PassTimeStamp = date_format(timestamp);
@@ -36,7 +34,7 @@ router.get(
       if (p === "away") {
         PassType = "visitor";
       }
-      PassCharge = charge;
+      PassCharge = Number(charge);
       return {
         PassIndex,
         passID,

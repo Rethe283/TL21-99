@@ -28,7 +28,7 @@ router.get(
       VehicleID = vehicleRef;
       TagProvider = hn;
 
-      Charge = charge;
+      Charge = Number(charge);
       return {
         PassIndex,
         passID,

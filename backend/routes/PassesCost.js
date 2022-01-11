@@ -29,7 +29,7 @@ router.get(
           Charge,
         };
       });
-    PassesCost = PassesCost.toFixed(2);
+    PassesCost = Number(PassesCost.toFixed(2));
 
     const NumberOfPasses = Object.keys(PassesAnal).length;
     const outJson = {
