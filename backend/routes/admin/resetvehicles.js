@@ -3,23 +3,15 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const Vehicles = require('../../models/Vehicles')
 const vehiclejson = require('../../Data/vehicles')
-const resetvehicles = async (req, res, next) => {
-    const areVehiclesReset = await resetAllVehicles()
-    if (areVehiclesReset === false) {
-        res.send({ status: 'failed' })
+router.post('/', async(req,res) =>{
+    try {
+        await Vehicles.deleteMany()
+        await Vehicles.insertMany(vehiclejson)
+        res.status(200).send({status: "OK"})
     }
-    res.send({ status: 'OK' })
-}
+    catch(err){
+        res.status(500).send({status: "failed", msg: err.message})
+    }
+})
 
-
-
-const resetAllVehicles = async () => {
-    const deleteTheVehicles = await Vehicles.deleteMany()
-    const resetTheVehicles = await Vehicles.insertMany(vehiclejson, {vehicles: []})
-    if (deleteTheVehicles && resetTheVehicles) return true
-    else return false
-}
-
-
-
-module.exports = resetvehicles
+module.exports = router
