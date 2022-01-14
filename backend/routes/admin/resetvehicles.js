@@ -1,6 +1,5 @@
 const express = require("express")
 const router = express.Router()
-const mongoose = require('mongoose')
 const Vehicles = require('../../models/Vehicles')
 const vehiclejson = require('../../Data/vehicles')
 
