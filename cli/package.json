@@ -1,0 +1,55 @@
+{
+  "name": "cli",
+  "description": "cli for interoperability system",
+  "version": "1.0.0",
+  "author": "tl21-99",
+  "bin": {
+    "se2199": "./bin/run"
+  },
+  "bugs": "https://github.com/ntua/TL21-99/issues",
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.10",
+    "@oclif/test": "^1.2.9",
+    "chai": "^4.3.4",
+    "eslint": "^7.32.0",
+    "eslint-config-oclif": "^3.1.2",
+    "globby": "^10.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/ntua/TL21-99",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "se2199",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "ntua/TL21-99",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "dependencies": {
+    "@oclif/command": "^1.8.16",
+    "@oclif/config": "^1.18.2",
+    "@oclif/plugin-help": "^3.3.1",
+    "axios": "^0.24.0",
+    "config": "^3.3.7"
+  }
+}
