@@ -7,7 +7,6 @@ const PassesAnalysis = require("./routes/PassesAnalysis");
 const PassesCost = require("./routes/PassesCost");
 const ChargesBy = require("./routes/ChargesBy");
 const settlement = require("./routes/settlement");
-const PassesUpdate = require("./routes/PassesUpdate");
 // const csvjson = require("./services/JSON2CSV");
 
 // admin endpoints include
@@ -15,6 +14,7 @@ const healthcheck = require("./routes/admin/healthcheck")
 const resetpasses = require("./routes/admin/resetpasses")
 const resetstations = require("./routes/admin/resetstations")
 const resetvehicles = require("./routes/admin/resetvehicles")
+const PassesUpdate = require("./routes/admin/PassesUpdate");
 
 app.use("/interoperability/api/ChargesBy", ChargesBy);
 app.use("/interoperability/api/PassesAnalysis", PassesAnalysis);
@@ -22,13 +22,13 @@ app.use("/interoperability/api/PassesPerStation", PassesPerStation);
 app.use("/interoperability/api/PassesCost", PassesCost);
 app.use("/interoperability/api/vehicle_passes", vehicle_passes);
 app.use("/interoperability/api/settlement", settlement);
-app.use("/interoperability/api/PassesUpdate", PassesUpdate);
 
 // admin endpoints routing
 app.use("/interoperability/api/admin/healthcheck", healthcheck)
 app.use("/interoperability/api/admin/resetpasses", resetpasses)
 app.use("/interoperability/api/admin/resetstations", resetstations)
 app.use("/interoperability/api/admin/resetvehicles", resetvehicles)
+app.use("/interoperability/api/admin/PassesUpdate", PassesUpdate);
 
 
 app.listen(9130, () => {
