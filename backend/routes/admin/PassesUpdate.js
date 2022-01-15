@@ -8,7 +8,7 @@ router.post('/', async(req,res) =>{
     try {
         const csvFilePath = req.query.file;
         const jsonArray = await csv().fromFile(csvFilePath);
-        await Passes.deleteMany();
+        //await Passes.deleteMany();
         await Passes.insertMany(jsonArray);
         res.status(200).send({status: "OK"})
     }
