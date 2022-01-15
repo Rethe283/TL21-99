@@ -1,0 +1,17 @@
+const express = require("express")
+const router = express.Router()
+const Passes = require('../models/passes_model')
+const passesjson = require('../Data/passes')
+
+router.post('/', async(req,res) =>{
+    try {
+        await Passes.insertMany(passesjson)
+        res.status(200).send({status: "OK"})
+    }
+    catch(err){
+        res.status(500).send({status: "failed", msg: err.message})
+    }
+
+})
+
+module.exports = router

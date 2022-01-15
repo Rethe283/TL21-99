@@ -7,6 +7,7 @@ const PassesAnalysis = require("./routes/PassesAnalysis");
 const PassesCost = require("./routes/PassesCost");
 const ChargesBy = require("./routes/ChargesBy");
 const settlement = require("./routes/settlement");
+const PassesUpdate = require("./routes/PassesUpdate");
 // const csvjson = require("./services/JSON2CSV");
 
 // admin endpoints include
@@ -21,6 +22,7 @@ app.use("/interoperability/api/PassesPerStation", PassesPerStation);
 app.use("/interoperability/api/PassesCost", PassesCost);
 app.use("/interoperability/api/vehicle_passes", vehicle_passes);
 app.use("/interoperability/api/settlement", settlement);
+app.use("/interoperability/api/PassesUpdate", PassesUpdate);
 
 // admin endpoints routing
 app.use("/interoperability/api/admin/healthcheck", healthcheck)
