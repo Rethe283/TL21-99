@@ -1,17 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const { date_format, date_greater_or_equal } = require("./date_functions");
+const {
+  date_format,
+  date_greater_or_equal,
+} = require("./utilities/date_functions");
 const converter = require("json-2-csv");
-const time_logger = require("./time_logger");
-//danger
+const time_logger = require("./utilities/time_logger");
+const { providerVerification } = require("./utilities/url_param_ver.js");
 
 const passes_model = require("../models/passes_model.js");
-const { message_settlement } = require("./settlementhelper");
+const { message_settlement } = require("./utilities/settlementhelper");
 //danger
 router.get(
   "/:op1_ID/:op2_ID/:date_from/:date_to",
   time_logger,
+  providerVerification,
   async (req, res, next) => {
+    if (!ProvidersExist || PeriodFrom > PeriodTo) {
+      res.sendStatus(400);
+      return;
+    }
     const { op1_ID, op2_ID, date_from, date_to } = req.params;
     let PassesCost = 0;
     const passes = await passes_model.find({});
