@@ -34,7 +34,7 @@ router.get(
       if (p === "away") {
         PassType = "visitor";
       }
-      PassCharge = charge;
+      PassCharge = Number(charge);
       return {
         PassIndex,
         passID,
