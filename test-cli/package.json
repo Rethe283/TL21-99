@@ -4,7 +4,8 @@
   "description": "Περιεχόμενα:",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 100000"
+    "test-admin": "mocha test/admin --timeout 100000 --exit ",
+    "test": "mocha test --timeout 100000 --exit "
   },
   "author": "",
   "license": "ISC",

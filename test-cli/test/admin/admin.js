@@ -51,5 +51,10 @@ describe('admin', () => {
       expect(res.stdout).to.equal('{ status: \'OK\' }\n')
       //expect(res.stdout).to.contain('SessionsInUploadedFile')
     })
+    it('it uploads a csv - no source given', async () => {
+      //const res = await runShellCommand('se2199 admin --passesupd --source ./test/stationsExample.csv')
+      const res = await runShellCommand('se2199 admin --passesupd')
+      expect(res.stderr).to.contain('Error: --source= must also be provided when using --passesupd=\n')
+    })
   })
 })
