@@ -58,14 +58,13 @@ router.get(
       const { StationOperator, CountOfPasses, ChargeSum } = pass;
       Charged = Number(ChargeSum);
       PassesCount = Number(CountOfPasses);
-      Amountperstation += Charged;
-      AmountCharged = Number(Amountperstation.toFixed(2));
-      ChargePerStation = Number(AmountCharged);
+
+      ChargePerStation = Number(Charged.toFixed(2));
 
       return { StationOperator, PassesCount, ChargePerStation };
     });
     VisitsPerStation.map((pass) => {
-      sum += ChargePerStation;
+      sum += pass.ChargePerStation;
       TotalAmountCharged = Number(sum.toFixed(2));
       return;
     });
