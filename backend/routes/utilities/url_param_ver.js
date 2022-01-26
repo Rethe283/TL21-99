@@ -1,4 +1,5 @@
 const stationsdata = require("../../Data/stations.json");
+const stations_model = require("../../models/Stations.js");
 
 function stationCheck(statID) {
   found = stationsdata.find((ID) => ID.stationID === statID);

@@ -51,16 +51,23 @@ router.get(
 
     const NumberOfPasses = Object.keys(VisitsbyVehicle).length;
     //fixing data types/ converting from string to number
+    let sum = 0;
     let TotalAmountCharged = 0;
+    let Amountperstation = 0;
     const VisitsPerStation = VisitsList.map((pass) => {
       const { StationOperator, CountOfPasses, ChargeSum } = pass;
-
       Charged = Number(ChargeSum);
       PassesCount = Number(CountOfPasses);
-      TotalAmountCharged += Charged;
-      AmountCharged = TotalAmountCharged.toFixed(2);
+      Amountperstation += Charged;
+      AmountCharged = Number(Amountperstation.toFixed(2));
       ChargePerStation = Number(AmountCharged);
+
       return { StationOperator, PassesCount, ChargePerStation };
+    });
+    VisitsPerStation.map((pass) => {
+      sum += ChargePerStation;
+      TotalAmountCharged = Number(sum.toFixed(2));
+      return;
     });
 
     const outJson = {
