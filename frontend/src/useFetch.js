@@ -6,7 +6,7 @@ const useFetch = (url) => {
     const [isPending, setIsPending] = useState(true)
 
     useEffect (() => {
-          fetch(url, { mode: 'no-cors'})
+          fetch(url)
             .then((res) => {
               if (!res.ok) {
                 console.log(res);
