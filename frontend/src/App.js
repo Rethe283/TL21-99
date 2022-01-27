@@ -1,9 +1,10 @@
-import Navbar from "./Navbar";
-import Home from "./Home.js";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Payment from "./Payment";
-import Analysis from "./Analysis";
-
+import React, { Component } from 'react';
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home.js";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import Payment from "./pages/Payment";
+import Analysis from "./pages/Analysis";
+import NotFound from './pages/404';
 function App() {
   return (
     <Router>
@@ -20,6 +21,10 @@ function App() {
             <Route path="/analysis">
               <Analysis></Analysis>
             </Route>
+            <Route exact path="/404">
+              <NotFound></NotFound>
+            </Route>
+            <Redirect to="/404"/>
           </Switch>
         </div>
       </div>
