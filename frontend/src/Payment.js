@@ -1,20 +1,27 @@
+// TODO:
+//  - date from earlier than date to 
+//  
+
 import { useState } from "react/cjs/react.development";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const Analysis = () => {
+const Payment = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [payingOperator, setPayingOperator] = useState("");
   const [receivingOperator, setReceivingOperator] = useState("");
-  const history = useHistory();
+  const history = useHistory()
 
-  const handleSubmit = () => {
-      console.log('something');
-  }
-  
+  const handleSubmit = (e) => {
+      e.preventDefault()
+    // fetch data, redirect
+    console.log(dateFrom);
+    history.push('/confirmPayment')
+  };
+
   return (
-    <div className="analysis">
-      <h2>Passes report</h2>
+    <div className="payment">
+      <h2> Make payment</h2>
       <form onSubmit={handleSubmit}>
         <h3>Dates</h3>
         <label>from</label>
@@ -35,7 +42,7 @@ const Analysis = () => {
 
         <h3>Organisation</h3>
 
-        <label>owes</label>
+        <label htmlFor="">paying</label>
         <select
           value={payingOperator}
           required
@@ -52,7 +59,7 @@ const Analysis = () => {
           <option value="OO">olympia odos</option>
         </select>
 
-        <label>to</label>
+        <label htmlFor="">receiving</label>
         <select
           value={receivingOperator}
           required
@@ -75,4 +82,4 @@ const Analysis = () => {
   );
 };
 
-export default Analysis;
+export default Payment;
