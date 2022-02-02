@@ -79,15 +79,19 @@ router.get(
       TotalAmountCharged,
       VisitsPerStation,
     };
+    let stat = 200;
+    if (NumberOfPasses === 0) {
+      stat = 402;
+    }
     if (req.query.format === "csv") {
       converter.json2csv(outJson, function (err, csv) {
         if (err) {
           throw err;
         }
-        return res.send(csv);
+        return res.status(stat).send(csv);
       });
     } else {
-      res.status(200).send(outJson);
+      res.status(stat).send(outJson);
     }
   }
 );
