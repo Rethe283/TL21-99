@@ -16,7 +16,7 @@ router.get(
   time_logger,
   providerVerification,
   async (req, res, next) => {
-    if (!ProvidersExist || PeriodFrom > PeriodTo) {
+    if (!ProvidersExist || PeriodFrom > PeriodTo || !Time_validation) {
       res.sendStatus(400);
       return;
     }

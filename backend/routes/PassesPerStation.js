@@ -13,7 +13,7 @@ router.get(
   time_logger,
   stationIDverification,
   async (req, res, next) => {
-    if (!Stationexists || PeriodFrom > PeriodTo) {
+    if (!Stationexists || PeriodFrom > PeriodTo || !Time_validation) {
       res.sendStatus(400);
       return;
     }

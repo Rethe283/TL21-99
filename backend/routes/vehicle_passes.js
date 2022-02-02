@@ -14,7 +14,11 @@ router.get(
   "/:vehicleID/:date_from/:date_to",
   time_logger,
   async (req, res, next) => {
-    if (req.params.vehicleID === null || PeriodFrom > PeriodTo) {
+    if (
+      req.params.vehicleID === null ||
+      PeriodFrom > PeriodTo ||
+      !Time_validation
+    ) {
       res.sendStatus(400);
       return;
     }
