@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, BrowserRouter as Router, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import useFetch from "../useFetch";
 
 function useQuery() {

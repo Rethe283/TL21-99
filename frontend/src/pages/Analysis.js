@@ -4,12 +4,15 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const Analysis = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
-  const [payingOperator, setPayingOperator] = useState("");
-  const [receivingOperator, setReceivingOperator] = useState("");
+  const [Operator1, setOperator1] = useState("AO");
+  const [Operator2, setOperator2] = useState("OO");
   const history = useHistory();
 
   const handleSubmit = () => {
       console.log('something');
+      const datefrom = dateFrom.replaceAll('-','');
+    const dateto = dateTo.replaceAll('-','');
+    history.push(`/ViewshortAnalysis?operator1=${Operator1}&operator2=${Operator2}&datefrom=${datefrom}&dateto=${dateto}`)
   }
   
   return (
@@ -37,10 +40,10 @@ const Analysis = () => {
 
         <label>owes</label>
         <select
-          value={payingOperator}
+          value={Operator1}
           required
           onChange={(e) => {
-            setPayingOperator(e.target.value);
+            setOperator1(e.target.value);
           }}
         >
           <option value="AO">aodos</option>
@@ -54,10 +57,10 @@ const Analysis = () => {
 
         <label>to</label>
         <select
-          value={receivingOperator}
+          value={Operator2}
           required
           onChange={(e) => {
-            setReceivingOperator(e.target.value);
+            setOperator2(e.target.value);
           }}
         >
           <option value="AO">aodos</option>

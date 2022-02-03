@@ -11,6 +11,11 @@ router.get(
   "/:op1_ID/:op2_ID/:date_from/:date_to",
   time_logger,
   async (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     const { op1_ID, op2_ID, date_from, date_to } = req.params;
     const passes = await passes_model.find({});
     const PassesAnal = passes.filter(

@@ -7,6 +7,7 @@ import ConfirmPayment from "./pages/ConfirmPayment"
 import Redirecting from "./pages/Redirecting"
 import NotFound from "./pages/404"
 import PaymentResults from "./pages/PaymentResults"
+import ViewshortAnalysis from "./pages/ViewshortAnalysis";
 
 function App() {
   return (
@@ -24,16 +25,19 @@ function App() {
             <Route exact path="/paymentresults">
               <PaymentResults></PaymentResults>
             </Route>
-            <Route path="/analysis">
+            <Route exact path="/analysis">
               <Analysis></Analysis>
             </Route>
-            <Route path='/confirmPayment'>
+            <Route exact path="/ViewshortAnalysis">
+              <ViewshortAnalysis></ViewshortAnalysis>
+            </Route>
+            <Route exact path='/confirmPayment'>
               <ConfirmPayment></ConfirmPayment>
             </Route>
-            <Route path='/redirecting'>
+            <Route exact path='/redirecting'>
               <Redirecting></Redirecting>
             </Route>
-            <Route path='/404'>
+            <Route exact path='/404'>
               <NotFound></NotFound>
             </Route>
             <Redirect to="/404"/>
