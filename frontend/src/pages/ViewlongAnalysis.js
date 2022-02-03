@@ -21,7 +21,6 @@ const ViewlongAnalysis = () => {
     const { error, isPending, data } = useFetch(
       `http://localhost:9130/interoperability/api/PassesAnalysis/${query.get("operator1")}/${query.get("operator2")}/${query.get("datefrom")}/${query.get("dateto")}`
     );
-    
   return (
     <div className="Analysis">
       {error && <div> {error}</div>}
@@ -37,30 +36,42 @@ const ViewlongAnalysis = () => {
             }}>
             <th style={{
                 border:"1px solid black"
-            }}>License Plate</th>
+            }}>PassIndex</th>
             <th style={{
                 border:"1px solid black"
-            }}>Tag Provider</th>
+            }}>passID</th>
+            <th style={{
+                border:"1px solid black"
+            }}>StationID</th>
+            <th style={{
+                border:"1px solid black"
+            }}>PassTimeStamp</th>
+            <th style={{
+                border:"1px solid black"
+            }}>VehicleID</th>
             <th style={{
                 border:"1px solid black"
             }}>Charge</th>
-            <th style={{
-                border:"1px solid black"
-            }}>TimeStamp</th>
             {data.PassesList.map((pass)=>(
                 <tr className="pass-preview" key={pass.passID}>
-                    <td style={{
+                <td style={{
                 border:"1px solid black"
-            }}>{pass.VehicleID}</td>
-                    <td style={{
+            }}>{pass.PassIndex}</td>
+                <td style={{
                 border:"1px solid black"
-            }}>{pass.TagProvider}</td>
-                    <td style={{
+            }}>{pass.passID}</td>
+                <td style={{
                 border:"1px solid black"
-            }}>{pass.Charge}</td>
-                    <td style={{
+            }}>{pass.StationID}</td>
+                <td style={{
                 border:"1px solid black"
             }}>{pass.PassTimeStamp}</td>
+            <td style={{
+                border:"1px solid black"
+            }}>{pass.VehicleID}</td>
+                <td style={{
+                border:"1px solid black"
+            }}>{pass.Charge}</td>
                 </tr>
             ))}
             </table>
