@@ -10,10 +10,18 @@ const Confirm = () => {
     let query = useQuery();
 
     const history = useHistory('')
-    const handleClick = (e) => {
+    const handleClick1 = (e) => {
         e.preventDefault()
         history.push("/redirecting")
     }
+    const handleClick2 = (e) => {
+      e.preventDefault()
+      history.push("/payment")
+  }
+  const handleClick3 = (e) => {
+    e.preventDefault()
+    history.push("/")
+}
     const { error, isPending, data } = useFetch(
       `http://localhost:9130/interoperability/api/settlement/${query.get("operator1")}/${query.get("operator2")}/${query.get("datefrom")}/${query.get("dateto")}`
     );
@@ -28,7 +36,10 @@ const Confirm = () => {
         <table>
             <td>{data.Financial_Settlement}</td>
         </table>
-        <button type="submit" onClick={handleClick}>Confirm payment</button>
+        <button type="submit" onClick={handleClick1}>Confirm payment</button>
+        <button type="submit" onClick={handleClick2}>Make A New Payment</button>
+        <div/>
+        <button type="submit" onClick={handleClick3}>Return To Home</button>
       </div>
       )}
     </div>

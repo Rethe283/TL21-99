@@ -23,7 +23,7 @@ const Payment = () => {
 
   return (
     <div className="payment">
-      <h2> Make payment</h2>
+      <h2> Make Payment</h2>
       <form onSubmit={handleSubmit}>
         <h3>Dates</h3>
         <label>from</label>

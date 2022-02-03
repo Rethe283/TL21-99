@@ -17,7 +17,7 @@ const Analysis = () => {
   
   return (
     <div className="analysis">
-      <h2>Passes report</h2>
+      <h2>Passes Analysis</h2>
       <form onSubmit={handleSubmit}>
         <h3>Dates</h3>
         <label>from</label>
@@ -38,7 +38,7 @@ const Analysis = () => {
 
         <h3>Organisation</h3>
 
-        <label>owes</label>
+        <label>Operator 1: </label>
         <select
           value={Operator1}
           required
@@ -55,7 +55,7 @@ const Analysis = () => {
           <option value="OO">olympia odos</option>
         </select>
 
-        <label>to</label>
+        <label>Operator 2: </label>
         <select
           value={Operator2}
           required

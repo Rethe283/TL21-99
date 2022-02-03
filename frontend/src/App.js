@@ -8,6 +8,7 @@ import Redirecting from "./pages/Redirecting"
 import NotFound from "./pages/404"
 import PaymentResults from "./pages/PaymentResults"
 import ViewshortAnalysis from "./pages/ViewshortAnalysis";
+import ViewlongAnalysis from "./pages/ViewlongAnalysis";
 
 function App() {
   return (
@@ -28,10 +29,13 @@ function App() {
             <Route exact path="/analysis">
               <Analysis></Analysis>
             </Route>
-            <Route exact path="/ViewshortAnalysis">
+            <Route exact path="/viewshortanalysis">
               <ViewshortAnalysis></ViewshortAnalysis>
             </Route>
-            <Route exact path='/confirmPayment'>
+            <Route exact path="/viewlonganalysis">
+              <ViewlongAnalysis></ViewlongAnalysis>
+            </Route>
+            <Route exact path='/confirmpayment'>
               <ConfirmPayment></ConfirmPayment>
             </Route>
             <Route exact path='/redirecting'>
