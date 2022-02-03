@@ -1,0 +1,18 @@
+{
+  "name": "test-cli",
+  "version": "1.0.0",
+  "description": "Περιεχόμενα:",
+  "main": "index.js",
+  "scripts": {
+    "test-admin": "mocha test/admin --timeout 100000 --exit ",
+    "test": "mocha test --timeout 100000 --exit "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "chai": "^4.3.5",
+    "mocha": "^9.2.0",
+    "util": "^0.12.4"
+  }
+}

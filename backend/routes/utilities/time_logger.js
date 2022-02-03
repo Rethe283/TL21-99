@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 const {
   date_format,
   date_greater_or_equal,
@@ -10,7 +12,10 @@ const time_logger = (req, res, next) => {
   PeriodFrom = weird_date_format(req.params.date_from);
   PeriodTo = weird_date_format(req.params.date_to);
 
-  // console.log(RequestTimestamp, PeriodFrom, PeriodTo);
+  Time_validation =
+    moment(req.params.date_from, "YYYYMMDD", true).isValid() &&
+    moment(req.params.date_to, "YYYYMMDD", true).isValid();
+
   next();
 };
 

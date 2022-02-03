@@ -7,13 +7,13 @@ router.get('/', (req, res) => {
         res.status(500).send({"status":"failed", "dbconnection":"disconnected"})
     }
     else if (mongoose.connection.readyState === 1){
-        res.status(200).send({"status":"OK", "dbconnection":"connected"})
+        res.status(200).send({status:'OK', dbconnection:'connected'})
     }
     else if (mongoose.connection.readyState === 2){
-        res.send({"status":"failed", "dbconnection":"connecting"})
+        res.send({status:'failed', dbconnection:'connecting'})
     }
     else {
-        res.send({"status":"failed", "dbconnection":"disconnecting"})
+        res.send({status:'failed', dbconnection:'disconnecting'})
     }
 })
 
