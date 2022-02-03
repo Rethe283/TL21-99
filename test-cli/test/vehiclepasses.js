@@ -59,4 +59,9 @@ describe('vehiclepasses',  () => {
         expect(res.stdout).to.equal('')
         expect(res.stderr).to.contain('Error: Request failed with status code 400\n')
     })
+    it('passes of a vehicle regarding all operators both altogether and individually - Error402', async () => {
+      const res = await runShellCommand('se2199 vehiclepasses --veh1 QO68DIC93032 --datefrom 20200101 --dateto 20200101')
+      expect(res.stdout).to.equal('')
+      expect(res.stderr).to.contain('Error: Request failed with status code 402\n')
+    })
 })

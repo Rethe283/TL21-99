@@ -54,5 +54,5 @@ describe('settlement',  () => {
         const res = await runShellCommand('se2199 settlement --op1 EG --op2 OO --datefrom 20200101 --dateto 20190404')
         expect(res.stdout).to.equal('')
         expect(res.stderr).to.contain('Error: Request failed with status code 400\n')
-    })
+    })   
 })

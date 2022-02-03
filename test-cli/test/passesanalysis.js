@@ -61,8 +61,13 @@ describe('passesanalysis',  () => {
         expect(res.stderr).to.contain('--dateto DATETO\n')
     })
     it('return info about the passes with operator2\'s tags in stations of operator1 - Error400', async () => {
-        const res = await runShellCommand('se2199 passescost --op1 OO --op2 EG --datefrom 20210101 --dateto 20190404')
+        const res = await runShellCommand('se2199 passesanalysis --op1 EG --op2 KO --datefrom 20210101 --dateto 20200106')
         expect(res.stdout).to.equal('')
         expect(res.stderr).to.contain('Error: Request failed with status code 400\n')
+    })
+    it('return info about the passes with operator2\'s tags in stations of operator1 - Error402', async () => {
+      const res = await runShellCommand('se2199 passesanalysis --op1 EG --op2 KO --datefrom 20200106 --dateto 20200106')
+      expect(res.stdout).to.equal('')
+      expect(res.stderr).to.contain('Error: Request failed with status code 402\n')
     })
 })

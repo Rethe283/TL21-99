@@ -56,4 +56,9 @@ describe('chargesby',  () => {
         expect(res.stdout).to.equal('')
         expect(res.stderr).to.contain('Error: Request failed with status code 400\n')
     })
+    it('return num of passes from all the other operators and how much they owe - Error402', async () => {
+      const res = await runShellCommand(`se2199 chargesby --op1 EG --datefrom 20200101 --dateto 20200101`)
+      expect(res.stdout).to.equal('')
+      expect(res.stderr).to.contain('Error: Request failed with status code 402\n')
+    })
 })

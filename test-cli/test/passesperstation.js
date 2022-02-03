@@ -74,11 +74,17 @@ describe('passesPerStation',  () => {
         expect(res.stderr).to.contain('Error: Missing required flag:\n')
         expect(res.stderr).to.contain('--dateto DATETO\n')
     })
-    // it('return info about the passes from a certain station - Error400', async () => {
     //     const res = await runShellCommand(`se2199 passesperstation --station EG01 --datefrom 20200515 --dateto 20203019`)
-    //     expect(res.stdout).to.equal('')
-    //     expect(res.stderr).to.contain('Error: Request failed with status code 40X\n')
-    // })
+    it('return info about the passes from a certain station - Error400', async () => {
+        const res = await runShellCommand(`se2199 passesperstation --station EG01 --datefrom 20210515 --dateto 20200919`)
+        expect(res.stdout).to.equal('')
+        expect(res.stderr).to.contain('Error: Request failed with status code 400\n')
+    })
+    it('return info about the passes from a certain station - Error402', async () => {
+      const res = await runShellCommand(`se2199 passesperstation --station EG01 --datefrom 20200919 --dateto 20200919`)
+      expect(res.stdout).to.equal('')
+      expect(res.stderr).to.contain('Error: Request failed with status code 402\n')
+    })
 })
 
 
