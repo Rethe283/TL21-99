@@ -6,6 +6,8 @@ import Analysis from "./pages/Analysis";
 import ConfirmPayment from "./pages/ConfirmPayment"
 import Redirecting from "./pages/Redirecting"
 import NotFound from "./pages/404"
+import PaymentResults from "./pages/PaymentResults"
+
 function App() {
   return (
     <Router>
@@ -18,6 +20,9 @@ function App() {
             </Route>
             <Route exact path="/payment">
               <Payment></Payment>
+            </Route>
+            <Route exact path="/paymentresults">
+              <PaymentResults></PaymentResults>
             </Route>
             <Route path="/analysis">
               <Analysis></Analysis>
