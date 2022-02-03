@@ -31,19 +31,19 @@ router.get(
     );
 
     const PassesList = PassesAnal.map((pass, index) => {
-      const { passID, timestamp, vehicleRef, hn, charge } = pass;
+      const { passID, timestamp, vehicleRef, stationRef, charge } = pass;
       PassIndex = index + 1;
       PassTimeStamp = date_format(timestamp);
       VehicleID = vehicleRef;
-      TagProvider = hn;
+      StationID = stationRef;
 
       Charge = Number(charge);
       return {
         PassIndex,
         passID,
+        StationID,
         PassTimeStamp,
         VehicleID,
-        TagProvider,
         Charge,
       };
     });
