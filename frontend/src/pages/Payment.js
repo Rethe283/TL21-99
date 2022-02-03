@@ -8,8 +8,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const Payment = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
-  const [Operator1, setOperator1] = useState("");
-  const [Operator2, setOperator2] = useState("");
+  const [Operator1, setOperator1] = useState("AO");
+  const [Operator2, setOperator2] = useState("OO");
   const history = useHistory()
 
   const handleSubmit = (e) => {
