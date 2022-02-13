@@ -15,6 +15,11 @@ router.get(
   time_logger,
   providerVerification,
   async (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     if (!ProvidersExist || PeriodFrom > PeriodTo || !Time_validation) {
       res.sendStatus(400);
       return;

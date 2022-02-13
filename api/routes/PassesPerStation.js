@@ -13,6 +13,11 @@ router.get(
   time_logger,
   stationIDverification,
   async (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     if (!Stationexists || PeriodFrom > PeriodTo || !Time_validation) {
       res.sendStatus(400);
       return;

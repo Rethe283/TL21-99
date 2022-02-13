@@ -9,6 +9,8 @@ import NotFound from "./pages/404"
 import PaymentResults from "./pages/PaymentResults"
 import ViewshortAnalysis from "./pages/ViewshortAnalysis";
 import ViewlongAnalysis from "./pages/ViewlongAnalysis";
+import ChargesBy from "./pages/ChargesBy";
+import ChargesByResults from "./pages/ChargesByResults";
 
 function App() {
   return (
@@ -37,6 +39,12 @@ function App() {
             </Route>
             <Route exact path='/confirmpayment'>
               <ConfirmPayment></ConfirmPayment>
+            </Route>
+            <Route exact path='/chargesby'>
+              <ChargesBy></ChargesBy>
+            </Route>
+            <Route exact path='/chargesbyresults'>
+              <ChargesByResults></ChargesByResults>
             </Route>
             <Route exact path='/redirecting'>
               <Redirecting></Redirecting>

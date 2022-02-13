@@ -10,8 +10,9 @@ const Navbar = () => {
                     background:'red',
                     borderRadius: "8px"
                 }}>Home</Link>
-                <Link to="/analysis">Analysis</Link>
                 <Link to="/payment">Payment</Link>
+                <Link to="/analysis">Analysis</Link>
+                <Link to="/chargesby">ChargesBy</Link>
             </div>
         </nav>
     )
