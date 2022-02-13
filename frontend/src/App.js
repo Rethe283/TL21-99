@@ -11,6 +11,13 @@ import ViewshortAnalysis from "./pages/ViewshortAnalysis";
 import ViewlongAnalysis from "./pages/ViewlongAnalysis";
 import ChargesBy from "./pages/ChargesBy";
 import ChargesByResults from "./pages/ChargesByResults";
+import PassesCost from "./pages/PassesCost";
+import PassesCostResults from "./pages/PassesCostResults";
+import PassesPerStation from "./pages/PassesPerStation";
+import PassesPerStationResults from "./pages/PassesPerStationResults";
+import VehiclePasses from "./pages/VehiclePasses";
+import VehiclePassesResults from "./pages/VehiclePassesResults";
+
 
 function App() {
   return (
@@ -45,6 +52,24 @@ function App() {
             </Route>
             <Route exact path='/chargesbyresults'>
               <ChargesByResults></ChargesByResults>
+            </Route>
+            <Route exact path='/passescost'>
+              <PassesCost></PassesCost>
+            </Route>
+            <Route exact path='/passescostresults'>
+              <PassesCostResults></PassesCostResults>
+            </Route>
+            <Route exact path='/passesperstation'>
+              <PassesPerStation></PassesPerStation>
+            </Route>
+            <Route exact path='/passesperstationresults'>
+              <PassesPerStationResults></PassesPerStationResults>
+            </Route>
+            <Route exact path='/vehiclepasses'>
+              <VehiclePasses></VehiclePasses>
+            </Route>
+            <Route exact path='/vehiclepassesresults'>
+              <VehiclePassesResults></VehiclePassesResults>
             </Route>
             <Route exact path='/redirecting'>
               <Redirecting></Redirecting>
