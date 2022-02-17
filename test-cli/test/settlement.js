@@ -24,7 +24,7 @@ describe('settlement',  () => {
         const res = await runShellCommand('se2199 settlement --op1 EG --op2 OO --datefrom 20180101 --dateto 20190404')
         expect(res.stdout).to.contain('PeriodFrom: \'2018-01-01\'')
         expect(res.stdout).to.contain('PeriodTo: \'2019-04-04\'')
-        expect(res.stdout).to.contain('Financial_Settlement: \'Operator OO owes operator EG 15.45 euros\'')
+        expect(res.stdout).to.contain('Financial_Settlement: \'Operator EG owes operator OO 15.45 euros\'')
       })
     it('return info about the financial settlement between two operators in a time period - no op1', async () => {
         const res = await runShellCommand('se2199 settlement --op2 OO --datefrom 20180101 --dateto 20190404')
