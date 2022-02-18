@@ -1,5 +1,12 @@
+const fs = require('fs');
+const key = fs.readFileSync("./certificates/localhost.decrypted.key");
+const cert = fs.readFileSync("./certificates/localhost.crt");
+
 const express = require("express");
 const app = express();
+
+const https = require('https');
+const server = https.createServer({ key, cert}, app);
 
 const vehicle_passes = require("./routes/vehicle_passes");
 const PassesPerStation = require("./routes/PassesPerStation");
@@ -30,6 +37,7 @@ app.use("/interoperability/api/admin/resetstations", resetstations);
 app.use("/interoperability/api/admin/resetvehicles", resetvehicles);
 app.use("/interoperability/api/admin/PassesUpdate", PassesUpdate);
 
-app.listen(9130, () => {
-  console.log("listening live at 9130");
+//app.listen(9130, () => {
+server.listen(9130, () => {
+console.log("listening live at 9130");
 });
