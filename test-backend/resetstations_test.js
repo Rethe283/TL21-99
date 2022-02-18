@@ -1,4 +1,4 @@
-//http://localhost:9130/interoperability/api/admin/resetstations
+//https://localhost:9130/interoperability/api/admin/resetstations
 
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
