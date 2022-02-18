@@ -1,4 +1,4 @@
-//http://localhost:9130/interoperability/api/ChargesBy/EG/20190101/20200101
+//https://localhost:9130/interoperability/api/ChargesBy/EG/20190101/20200101
 
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
