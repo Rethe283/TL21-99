@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test-admin": "mocha test/admin --timeout 100000 --exit ",
-    "test": "mocha test --timeout 100000 --exit "
+    "test": "mocha test --timeout 100000 --exit ",
+    "test-functional": "mocha test/func --timeout 100000 --exit "
   },
   "author": "",
   "license": "ISC",
