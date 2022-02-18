@@ -14,12 +14,12 @@ class settlement extends Command {
   async run() {
     try {
       const {flags} = this.parse(settlement)
-      //axios.defaults.headers.common['X-OBSERVATORY-AUTH'] = flags.apikey
+      process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       let status
       if (flags.format === 'csv') {
-        status = await axios.get(`http://localhost:9130/interoperability/api/settlement/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}/?format=csv`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/settlement/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}/?format=csv`)
       } else {
-        status = await axios.get(`http://localhost:9130/interoperability/api/settlement/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/settlement/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}`)
       }
       console.log(status.data)
     } catch (error) {
@@ -34,10 +34,6 @@ settlement.flags = {
     required: true,
     default: 'json',
   }),
-  // apikey: flags.string({
-  //   required: true,
-  //   description: 'the api key used for authorization',
-  // }),
   op1: flags.string({
     required: true,
     description: 'operator 1',

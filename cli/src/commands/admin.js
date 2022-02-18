@@ -19,10 +19,11 @@ class admin extends Command {
       if (flags.passesupd !== undefined) {
         
         let status
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
         if (flags.format === 'csv') {
-          status = await axios.post(`http://localhost:9130/interoperability/api/admin/PassesUpdate?file=${flags.source}/?format=csv`)
+          status = await axios.post(`https://localhost:9130/interoperability/api/admin/PassesUpdate?file=${flags.source}/?format=csv`)
         } else {
-          status = await axios.post(`http://localhost:9130/interoperability/api/admin/PassesUpdate?file=${flags.source}`)
+          status = await axios.post(`https://localhost:9130/interoperability/api/admin/PassesUpdate?file=${flags.source}`)
         }
         console.log(status.data)
       }

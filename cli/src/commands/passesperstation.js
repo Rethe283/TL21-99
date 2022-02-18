@@ -14,12 +14,12 @@ class passesperstation extends Command {
   async run() {
     try {
       const {flags} = this.parse(passesperstation)
-      //axios.defaults.headers.common['X-OBSERVATORY-AUTH'] = flags.apikey
+      process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       let status
       if (flags.format === 'csv') {
-        status = await axios.get(`http://localhost:9130/interoperability/api/PassesPerStation/${flags.station}/${flags.datefrom}/${flags.dateto}/?format=csv`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/PassesPerStation/${flags.station}/${flags.datefrom}/${flags.dateto}/?format=csv`)
       } else {
-        status = await axios.get(`http://localhost:9130/interoperability/api/PassesPerStation/${flags.station}/${flags.datefrom}/${flags.dateto}`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/PassesPerStation/${flags.station}/${flags.datefrom}/${flags.dateto}`)
       }
       console.log(status.data)
     } catch (error) {

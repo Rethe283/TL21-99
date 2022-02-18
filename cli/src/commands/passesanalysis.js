@@ -16,10 +16,11 @@ class passesanalysis extends Command {
       const {flags} = this.parse(passesanalysis)
       //axios.defaults.headers.common['X-OBSERVATORY-AUTH'] = flags.apikey
       let status
+      process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       if (flags.format === 'csv') {
-        status = await axios.get(`http://localhost:9130/interoperability/api/PassesAnalysis/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}/?format=csv`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/PassesAnalysis/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}/?format=csv`)
       } else {
-        status = await axios.get(`http://localhost:9130/interoperability/api/PassesAnalysis/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/PassesAnalysis/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}`)
       }
       console.log(status.data)
     } catch (error) {

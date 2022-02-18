@@ -6,20 +6,19 @@ const {Command, flags} = require('@oclif/command')
 const https = require('https')
 const axios = require('axios')
 const chalk = require('chalk')
-const config = require('config')
 
-axios.defaults.httpsAgent = new https.Agent()
+axios.default.httpsAgent = new https.Agent()
 
 class chargesby extends Command {
   async run() {
     try {
       const {flags} = this.parse(chargesby)
-      //axios.defaults.headers.common['X-OBSERVATORY-AUTH'] = flags.apikey
+      process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       let status
       if (flags.format === 'csv') {
-        status = await axios.get(`http://localhost:9130/interoperability/api/ChargesBy/${flags.op1}/${flags.datefrom}/${flags.dateto}/?format=csv`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/ChargesBy/${flags.op1}/${flags.datefrom}/${flags.dateto}/?format=csv`)
       } else {
-        status = await axios.get(`http://localhost:9130/interoperability/api/ChargesBy/${flags.op1}/${flags.datefrom}/${flags.dateto}`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/ChargesBy/${flags.op1}/${flags.datefrom}/${flags.dateto}`)
       }
       console.log(status.data)
     } catch (error) {
@@ -34,10 +33,6 @@ chargesby.flags = {
     required: true,
     default: 'json',
   }),
-  // apikey: flags.string({
-  //   required: true,
-  //   description: 'the api key used for authorization',
-  // }),
   op1: flags.string({
     required: true,
     description: 'operator_id',
