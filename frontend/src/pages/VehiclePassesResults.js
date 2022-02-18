@@ -19,7 +19,7 @@ const VehiclePassesResults = () => {
         history.push(`/`)
     }
     const { error, isPending, data } = useFetch(
-      `http://localhost:9130/interoperability/api/vehicle_passes/${query.get("vehicle")}/${query.get("datefrom")}/${query.get("dateto")}`
+      `https://localhost:9130/interoperability/api/vehicle_passes/${query.get("vehicle")}/${query.get("datefrom")}/${query.get("dateto")}`
     );
   return (
     <div className="Analysis">

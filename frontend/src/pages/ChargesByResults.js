@@ -18,7 +18,7 @@ const ViewshortAnalysis = () => {
     history.push(`/`)
 }
     const { error, isPending, data } = useFetch(
-      `http://localhost:9130/interoperability/api/ChargesBy/${query.get("operator")}/${query.get("datefrom")}/${query.get("dateto")}`
+      `https://localhost:9130/interoperability/api/ChargesBy/${query.get("operator")}/${query.get("datefrom")}/${query.get("dateto")}`
     );
     
   return (

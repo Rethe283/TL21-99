@@ -18,7 +18,7 @@ const PassesCostResults = () => {
       history.push(`/`)
   }
     const { error, isPending, data } = useFetch(
-      `http://localhost:9130/interoperability/api/PassesCost/${query.get("operator1")}/${query.get("operator2")}/${query.get("datefrom")}/${query.get("dateto")}`
+      `https://localhost:9130/interoperability/api/PassesCost/${query.get("operator1")}/${query.get("operator2")}/${query.get("datefrom")}/${query.get("dateto")}`
     );
     
   return (

@@ -19,7 +19,7 @@ const ViewlongAnalysis = () => {
         history.push(`/analysis`)
     }
     const { error, isPending, data } = useFetch(
-      `http://localhost:9130/interoperability/api/PassesAnalysis/${query.get("operator1")}/${query.get("operator2")}/${query.get("datefrom")}/${query.get("dateto")}`
+      `https://localhost:9130/interoperability/api/PassesAnalysis/${query.get("operator1")}/${query.get("operator2")}/${query.get("datefrom")}/${query.get("dateto")}`
     );
   return (
     <div className="Analysis">
