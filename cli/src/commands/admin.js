@@ -1,14 +1,10 @@
-/* eslint-disable node/no-missing-require */
-/* eslint-disable no-negated-condition */
-/* eslint-disable no-console */
 const {Command, flags} = require('@oclif/command')
 
 const https = require('https')
 const axios = require('axios')
 const chalk = require('chalk')
-//const fs = require('fs')
 const config = require('config')
-//const FormData = require('form-data')
+
 axios.defaults.httpsAgent = new https.Agent()
 
 class admin extends Command {

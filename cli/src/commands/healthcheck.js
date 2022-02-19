@@ -3,7 +3,7 @@ const {Command, flags} = require('@oclif/command')
 const https = require('https')
 const axios = require('axios')
 const chalk = require('chalk')
-const config = require('config')
+// const config = require('config')
 axios.defaults.httpsAgent = new https.Agent()
 
 class healthcheck extends Command {

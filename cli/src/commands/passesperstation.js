@@ -1,6 +1,3 @@
-/* eslint-disable unicorn/filename-case */
-/* eslint-disable no-console */
-/* eslint-disable node/no-unpublished-require */
 const {Command, flags} = require('@oclif/command')
 
 const https = require('https')
@@ -34,10 +31,6 @@ passesperstation.flags = {
     required: true,
     default: 'json',
   }),
-  // apikey: flags.string({
-  //   required: true,
-  //   description: 'the api key used for authorization',
-  // }),
   station: flags.string({
     required: true,
     description: 'the id of the station to search',

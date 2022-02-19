@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable node/no-unpublished-require */
 const {Command, flags} = require('@oclif/command')
 
 const https = require('https')

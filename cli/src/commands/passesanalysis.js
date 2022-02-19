@@ -1,6 +1,3 @@
-/* eslint-disable unicorn/filename-case */
-/* eslint-disable no-console */
-/* eslint-disable node/no-unpublished-require */
 const {Command, flags} = require('@oclif/command')
 
 const https = require('https')
@@ -14,7 +11,6 @@ class passesanalysis extends Command {
   async run() {
     try {
       const {flags} = this.parse(passesanalysis)
-      //axios.defaults.headers.common['X-OBSERVATORY-AUTH'] = flags.apikey
       let status
       process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       if (flags.format === 'csv') {
@@ -35,10 +31,6 @@ passesanalysis.flags = {
     required: true,
     default: 'json',
   }),
-  // apikey: flags.string({
-  //   required: true,
-  //   description: 'the api key used for authorization',
-  // }),
   op1: flags.string({
     required: true,
     description: 'the id of the operator where passes happen',
