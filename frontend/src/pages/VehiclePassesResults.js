@@ -26,7 +26,7 @@ const VehiclePassesResults = () => {
       {isPending && <div>Loading...</div>}
       {data && 
       <div>
-        <h2>Long Analysis</h2> 
+        <h2>Vehicle Passes</h2> 
         <table>
             <td>In the time period between {data.PeriodFrom} and {data.PeriodTo} vehicle with {data.vehicleID} had {data.NumberOfPasses} passes, was charged {data.TotalAmountCharged} and visited:</td>
         </table>
