@@ -34,11 +34,12 @@ For cli unit testing inside the test-cli directory
 [admin passesupd, healthcheck, resetpasses, resetstations, resetvehicles]
 
 For admin unit/functional testing inside the test-cli directory 
+
     $npm run test-admin 
 
-Note: after that testing the "passes" collection is fillled only 
+*Note: after that testing the "passes" collection is fillled only 
 with dummy data for testing purposes via the newpasses_copy.csv file, 
-so remember to update that collection (manually or via cli command)
+so remember to update that collection (manually or via cli command)*
 
 ```
 <!-- admin_testingstop -->
