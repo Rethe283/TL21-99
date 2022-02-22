@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import useFetch from "../useFetch";
-// import "./viwlonganalysis.css"
 function useQuery() {
   const {search} = useLocation();
   return React.useMemo(() => new URLSearchParams(search), [search]);
