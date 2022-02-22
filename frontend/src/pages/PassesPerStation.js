@@ -36,7 +36,7 @@ const PassesPerStation = () => {
         />
         <br />
 
-        <h3>Organisation</h3>
+        <h3>Station Identification</h3>
 
         <label htmlFor="">Station: </label>
         <select

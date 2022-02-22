@@ -36,7 +36,7 @@ const VehiclePasses = () => {
         />
         <br />
 
-        <h3>Organisation</h3>
+        <h3>Vehicle Identification</h3>
 
         <label htmlFor="">Vehicle License Plate: </label>
         <input
