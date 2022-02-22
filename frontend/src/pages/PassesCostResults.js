@@ -27,7 +27,7 @@ const PassesCostResults = () => {
       {isPending && <div>Loading...</div>}
       {data && 
       <div>
-        <h2>Short Analysis</h2> 
+        <h2>Passes Cost</h2> 
         <table>
             <td>In the time period between {data.PeriodFrom} and {data.PeriodTo} {data.op1_ID} has charged {data.op2_ID} {data.PassesCost} euros for {data.NumberOfPasses} passes</td>
         </table>
