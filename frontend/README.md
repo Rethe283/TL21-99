@@ -46,9 +46,11 @@ You can navigate the web app using the Navbar on the top to choose between:
 In the Payment page fill in the data:
 * from
 * to
+
 and choose from the available operators in:
 * operator 1
 * operator 2
+
 and press proceed.
 This will lead you to the Confirm Payment page where you can view how much is owed between the operators in that time period and decide between:
 * Confirm payment        (to confirm the payment and send the appropriate amount)
