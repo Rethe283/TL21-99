@@ -3,12 +3,8 @@ const axios = require('axios')
 var expect = require('chai').expect
 const util = require('util')
 const execProm = util.promisify(exec)
-//const __homedir = require('os').homedir()
-//const fs = require('fs')
-const passes_model = require('../../backend/models/passes_model')
-//const Vehicle = require('../../../../back-end/api/models/Vehicle')
 
-//require('../testserver')
+const passes_model = require('../../backend/models/passes_model')
 
 async function runShellCommand(command) {
   let result
@@ -23,17 +19,11 @@ async function runShellCommand(command) {
   return result
 }
 
-// function getRndInteger(min, max) {
-//   return Math.floor(Math.random() * (max - min)) + min
-// }
-
 
 describe('passesPerStation',  () => {
     it('return info about the passes from a certain station', async () => {
         const pass = await passes_model.findOne()
-        //const res = await runShellCommand(`se2199 passesperstation --station ${pass.stationRef} --datefrom 20200515 --dateto 20200519`)
         const res = await runShellCommand(`se2199 passesperstation --station EG01 --datefrom 20200515 --dateto 20200519`)
-        //expect(res.stdout).to.contain(`Station: '${pass.stationRef}'`)
         expect(res.stdout).to.contain(`Station: 'EG01'`)
         expect(res.stdout).to.contain('StationOperator')
         expect(res.stdout).to.contain('PeriodFrom')

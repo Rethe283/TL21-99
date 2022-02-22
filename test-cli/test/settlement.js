@@ -4,8 +4,6 @@ var expect = require('chai').expect
 const util = require('util')
 const execProm = util.promisify(exec)
 
-//require('../testserver')
-
 async function runShellCommand(command) {
   let result
   try {
