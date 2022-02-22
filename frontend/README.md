@@ -33,7 +33,7 @@ $ npm run start
 
 ## UI Contents
 
-### Navigation
+### `Navigation`
 You can navigate the web app using the Navbar on the top to choose between:
 * Home
 * Payment
@@ -42,7 +42,7 @@ You can navigate the web app using the Navbar on the top to choose between:
 * PassesCost
 * PassesPerStation
 * TrackVehicle
-### Payment
+### `Payment`
 In the Payment page fill in the data:
 * from
 * to
@@ -58,7 +58,7 @@ This will lead you to the Confirm Payment page where you can view how much is ow
 * Make A New Payment     (to discard this payment and make a new one)
 * Return To Home         (to discard this payment and return to the Home page)
 
-### Analysis
+### `Analysis`
 In the Analysis page fill in the data:
 * from
 * to
@@ -84,7 +84,7 @@ then you can decide between:
 * View Short Analysis
 * Request new Analysis
 
-### ChargesBy
+### `ChargesBy`
 In the ChargesBy page fill in the data:
 * from
 * to
@@ -102,7 +102,7 @@ then you can decide between:
 * New Charges By
 * Home
 
-### PassesCost
+### `PassesCost`
 In the PassesCost page fill in the data:
 * from
 * to
@@ -119,7 +119,7 @@ then you can decide between:
 * New PassesCost
 * Home
 
-### PassesPerStation
+### `PassesPerStation`
 In the PassesPerStation page fill in the data:
 * from
 * to
@@ -139,7 +139,7 @@ then you can decide between:
 6. New PassesPerStation
 7. Home
 
-### TrackVehicle
+### `TrackVehicle`
 In the TrackVehicle page fill in the data:
 * from
 * to
@@ -154,5 +154,5 @@ Also a table will be made that displays this information about said vehicle's pa
 2. PassesCount           (How many passes were made through each operator's stations)
 3. Total Amount Charged  (How much each operator has totally charged the vehicle)
 
-## DISCLAIMER
-For best results make sure that the **to** date is always at least one day after the **from** date and that in cases where 2 operators are selected that they are 2 *different* operators
+## **DISCLAIMER**
+For best results make sure that the ***to*** date is always at least one day after the ***from*** date and that in cases where 2 operators are selected that they are 2 *different* operators
