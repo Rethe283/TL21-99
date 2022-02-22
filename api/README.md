@@ -11,16 +11,27 @@
 
  "dependencies": {
     "bootstrap": "^5.1.3",
+
     "csv-2-json": "^0.1.6",
+
     "csvtojson": "^2.0.10",
+
     "express": "^4.16.4",
+
     "flat": "^5.0.2",
+
     "json-2-csv": "^3.15.0",
+
     "json2csv": "^5.0.6",
+
     "jsontocsv": "^0.3.0",
+
     "lodash": "^4.17.21",
+
     "moment": "^2.29.1",
+
     "mongodb": "^4.2.2",
+
     "mongoose": "^6.1.5"
   }
 
@@ -38,30 +49,29 @@ https://localhost:9130/interoperability/api/
 
 ##  Stakeholder Endpoints
 
-- {baseURL}/PassesPerStation/:stationID/:date_from/:date_to
+### {baseURL}/PassesPerStation/:stationID/:date_from/:date_to
 
 Returns a list of the Passes for the selected Station and time period given in the URL. 
 
 
-- {baseURL}/PassesAnalysis/:op1_ID/:op2_ID/:date_from/:date_to
+### {baseURL}/PassesAnalysis/:op1_ID/:op2_ID/:date_from/:date_to
 
 Returns a list of the Passes Analysis for all stations of the first provider with the second provider's tag for the given time period. All pass events are of type "Visitor", which is defined in the "backend/models" folder.
 
 
-- {baseURL}/PassesCost/:op1_ID/:op2_ID/:date_from/:date_to
+### {baseURL}/PassesCost/:op1_ID/:op2_ID/:date_from/:date_to
 
 Returns the total amount of passes and the respective cost for passes through the first provider's stations by vehicles with the second provider's tag for the given time period.
 
 
-- {baseURL}/ChargesBy/:op_ID/:date_from/:date_to
+### {baseURL}/ChargesBy/:op_ID/:date_from/:date_to
 
 Returns the total amount of passes and the respective cost for all passes through the provider's stations grouped by their provider's tag. 
 
-
-- {baseURL}/settlement/:op1_ID/:op2_ID/:date_from/:date_to
+### {baseURL}/settlement/:op1_ID/:op2_ID/:date_from/:date_to
 
 Returns the financial settlement between the two providers for the given time period.
 
-- {baseURL}/vehicle_passes/:vehicleID/:date_from/:date_to
+### {baseURL}/vehicle_passes/:vehicleID/:date_from/:date_to
 
 Returns the total amount of passes and the respective cost for the selected vehicle both in total and individually for every provider's stations.
