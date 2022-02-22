@@ -9,7 +9,6 @@ const ChargesBy = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-  // fetch data, redirect
   console.log(dateFrom);
   const datefrom = dateFrom.replaceAll('-','');
   const dateto = dateTo.replaceAll('-','');

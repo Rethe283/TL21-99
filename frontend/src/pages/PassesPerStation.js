@@ -1,7 +1,3 @@
-// TODO:
-//  - date from earlier than date to 
-//  
-
 import { useState } from "react/cjs/react.development";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -13,7 +9,6 @@ const PassesPerStation = () => {
 
   const handleSubmit = (e) => {
       e.preventDefault()
-    // fetch data, redirect
     console.log(dateFrom);
     const datefrom = dateFrom.replaceAll('-','');
     const dateto = dateTo.replaceAll('-','');
