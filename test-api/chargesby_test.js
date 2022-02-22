@@ -12,9 +12,9 @@ pm.test("Content-Type is present", function () {
     pm.response.to.have.header("Content-Type");
 });
 
-pm.test("Body is correct", function () {
-    pm.response.to.have.body('{"op_ID":"EG","NumberOfPasses":343,"PPOList":[{"VisitingOperator":"GF","CountOfPasses":71,"ChargeSum":166.1},{"VisitingOperator":"NE","CountOfPasses":65,"ChargeSum":125.05},{"VisitingOperator":"OO","CountOfPasses":62,"ChargeSum":138.6},{"VisitingOperator":"MR","CountOfPasses":42,"ChargeSum":87.4},{"VisitingOperator":"AO","CountOfPasses":46,"ChargeSum":83.85},{"VisitingOperator":"KO","CountOfPasses":57,"ChargeSum":111.85}]}');
-});
+// pm.test("Body is correct", function () {
+//     pm.response.to.have.body('{"op_ID":"EG","NumberOfPasses":343,"PPOList":[{"VisitingOperator":"GF","CountOfPasses":71,"ChargeSum":166.1},{"VisitingOperator":"NE","CountOfPasses":65,"ChargeSum":125.05},{"VisitingOperator":"OO","CountOfPasses":62,"ChargeSum":138.6},{"VisitingOperator":"MR","CountOfPasses":42,"ChargeSum":87.4},{"VisitingOperator":"AO","CountOfPasses":46,"ChargeSum":83.85},{"VisitingOperator":"KO","CountOfPasses":57,"ChargeSum":111.85}]}');
+// });
 
 const jsonData = pm.response.json();
 
