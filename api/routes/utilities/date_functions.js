@@ -22,9 +22,7 @@ function weird_date_format(date) {
   const year = date.substring(0, 4);
   const month = date.substring(4, 6);
   const day = date.substring(6, 8);
-  // const hours = date.substring(8, 10);
-  // const minutes = date.substring(10, 12);
-  // const seconds = date.substring(12, 14);
-  return year + "-" + month + "-" + day; // in case we have a weird date format i have this just in case- maybe i will ahve to turn it into middleware//might be of use later
+
+  return year + "-" + month + "-" + day;
 }
 module.exports = { date_format, date_greater_or_equal, weird_date_format };
