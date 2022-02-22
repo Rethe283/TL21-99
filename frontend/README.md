@@ -28,5 +28,6 @@ Your app is ready to be deployed!
 In frontend directory:
 
 $ npm install
+
 $ npm run start
 
