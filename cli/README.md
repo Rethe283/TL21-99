@@ -52,9 +52,6 @@ USAGE
 OPTIONS
   --passesupd --source pathto\file.csv
 
-DESCRIPTION
-  ...
-  Extra documentation goes here
 ```
 
 _See code: [src/commands/admin.js](https://github.com/ntua/TL21-99/blob/v1.0.0/src/commands/admin.js)_
