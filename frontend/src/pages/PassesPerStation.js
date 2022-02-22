@@ -17,7 +17,7 @@ const PassesPerStation = () => {
 
   return (
     <div className="passes per station">
-      <h2>Check Passes Cost</h2>
+      <h2>Check Passes Per Station</h2>
       <form onSubmit={handleSubmit}>
         <h3>Dates</h3>
         <label>from</label>

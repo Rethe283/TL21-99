@@ -17,7 +17,7 @@ const VehiclePasses = () => {
 
   return (
     <div className="tracked vehicle">
-      <h2> Make Payment</h2>
+      <h2>Track A Vehicle</h2>
       <form onSubmit={handleSubmit}>
         <h3>Dates</h3>
         <label>from</label>
