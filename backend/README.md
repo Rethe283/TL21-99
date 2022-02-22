@@ -18,24 +18,24 @@
 https://localhost:9130/interoperability/api/
 ##  Admin Endpoints
 
-- {baseURL}/admin/healthcheck 
+### {baseURL}/admin/healthcheck 
 
 Supports GET method and checks end-to-end user-database connectivity.
 
 
-- {baseURL}/admin/resetpasses
+### {baseURL}/admin/resetpasses
 
 Supports POST method and initializes the "passes" collection in the mongodb database by deleting all data.
 
 
-- {baseURL}/admin/resetstations
+### {baseURL}/admin/resetstations
 
 Supports POST method and initializes the "stations" collection in the mongodb database by deleting and inserting given mock data.
 
-- {baseURL}/admin/resetvehicles
+### {baseURL}/admin/resetvehicles
 
 Supports POST method and initializes the "vehicles" collection in the mongodb database by deleting and inserting given mock data.
 
-- {baseURL}/admin/PassesUpdate
+### {baseURL}/admin/PassesUpdate
 
 Supports POST method and initializes the "passes" collection in the mongodb database by inserting data from a csv file with the name "newpasses2199" in a given location ./Data/newpasses2199.csv.
