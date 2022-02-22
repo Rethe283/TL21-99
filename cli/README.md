@@ -43,14 +43,14 @@ USAGE
 
 ## `se2199 admin`
 
-Describe the command here
+admin scope command to update the passes collection using a csv file
 
 ```
 USAGE
   $ se2199 admin
 
 OPTIONS
-  -n, --name=name  name to print
+  --passesupd --source pathto\file.csv
 
 DESCRIPTION
   ...
