@@ -8,6 +8,8 @@ The goal of the project was to develop an application, that implements an intero
 
 ## Installation
 
+For each directory it is required to have nodejs and npm installed to the computers.
+
 For a quick installation:
 
 $ cd TL21-99/api
