@@ -24,7 +24,8 @@ describe('admin', () => {
   describe('passesupd',  () => {
 
     it('it uploads a csv', async () => {
-      const res = await runShellCommand('se2199 admin --passesupd --source D:/softeng21-99/TL21-99/backend/Data/newpasses2199copy.csv')
+      const res = await runShellCommand('se2199 admin --passesupd --source /Users/marilyvlontzou/softeng21/TL/TL21-99/backend/Data/newpasses2199copy.csv')
+      //const res = await runShellCommand('se2199 admin --passesupd --source D:/softeng21-99/TL21-99/backend/Data/newpasses2199copy.csv')
       expect(res.stdout).to.equal('{ status: \'OK\' }\n')
 
     })
