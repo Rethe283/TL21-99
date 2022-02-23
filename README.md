@@ -6,6 +6,15 @@ This project was conducted for the course of Software Engineering at the 2021-20
 
 The goal of the project was to develop an application, that implements an interoperability system, so that different toll companies can make settlements.
 
+## Installation
+
+For a quick installation:
+
+$ cd TL21-99/api
+
+$ npm run installer
+
+$ npm start
 
 ## Team Members
 

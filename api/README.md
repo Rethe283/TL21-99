@@ -39,9 +39,9 @@
 
 For a quick installation in the TL21-99/api/ directory:
 
-$ npm install
+$ npm run installer
 
-$ node index.js
+$ npm start
 
 ## Base URL
 

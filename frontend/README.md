@@ -27,7 +27,7 @@ Your app is ready to be deployed!
 
 In frontend directory:
 
-$ npm install
+$ npm install (If you haven't already done the quick installation)
 
 $ npm run start
 

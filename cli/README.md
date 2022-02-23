@@ -15,7 +15,7 @@ cli for interoperability system
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g cli
+$ npm install -g cli (If you haven't already done the quick installation)
 $ se2199 COMMAND
 running command...
 $ se2199 (-v|--version|version)

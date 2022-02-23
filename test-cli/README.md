@@ -12,7 +12,7 @@
 ```
 Inside the test-cli directory install the required modules
 
-    $npm install
+    $npm install (If you haven't already done the quick installation)
 
 ```
 <!-- initial_preparationstop -->
