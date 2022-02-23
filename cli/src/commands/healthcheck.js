@@ -3,7 +3,7 @@ const {Command, flags} = require('@oclif/command')
 const https = require('https')
 const axios = require('axios')
 const chalk = require('chalk')
-const config = require('config')
+// const config = require('config')
 axios.defaults.httpsAgent = new https.Agent()
 
 class healthcheck extends Command {
@@ -11,10 +11,11 @@ class healthcheck extends Command {
     try {
       const {flags} = this.parse(healthcheck)
       let status
+      process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       if (flags.format === 'csv') {
-        status = await axios.get(`http://localhost:9130/interoperability/api/admin/healthcheck`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/admin/healthcheck`)
       } else {
-        status = await axios.get(`http://localhost:9130/interoperability/api/admin/healthcheck`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/admin/healthcheck`)
       }
       console.log(status.data)
     } catch (error) {

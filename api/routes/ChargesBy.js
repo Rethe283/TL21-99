@@ -4,7 +4,7 @@ const {
   date_format,
   date_greater_or_equal,
 } = require("./utilities/date_functions");
-const passes_model = require("../models/passes_model.js");
+const passes_model = require("../../backend/models/passes_model.js");
 const time_logger = require("./utilities/time_logger");
 const _ = require("lodash");
 const { PPOList } = require("lodash");
@@ -17,6 +17,11 @@ router.get(
   time_logger,
   single_provider_verification,
   async (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     if (!ProviderExists || PeriodFrom > PeriodTo || !Time_validation) {
       res.sendStatus(400);
       return;

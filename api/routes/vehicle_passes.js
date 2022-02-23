@@ -4,7 +4,7 @@ const {
   date_format,
   date_greater_or_equal,
 } = require("./utilities/date_functions");
-const passes_model = require("../models/passes_model.js");
+const passes_model = require("../../backend/models/passes_model.js");
 const time_logger = require("./utilities/time_logger");
 const _ = require("lodash");
 const { VisitsList } = require("lodash");
@@ -14,6 +14,11 @@ router.get(
   "/:vehicleID/:date_from/:date_to",
   time_logger,
   async (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     if (
       req.params.vehicleID === null ||
       PeriodFrom > PeriodTo ||

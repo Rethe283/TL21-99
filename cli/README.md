@@ -15,7 +15,7 @@ cli for interoperability system
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g cli
+$ npm install -g cli (If you haven't already done the quick installation)
 $ se2199 COMMAND
 running command...
 $ se2199 (-v|--version|version)
@@ -43,18 +43,15 @@ USAGE
 
 ## `se2199 admin`
 
-Describe the command here
+admin scope command to update the passes collection using a csv file
 
 ```
 USAGE
   $ se2199 admin
 
 OPTIONS
-  -n, --name=name  name to print
+  --passesupd --source pathto\file.csv
 
-DESCRIPTION
-  ...
-  Extra documentation goes here
 ```
 
 _See code: [src/commands/admin.js](https://github.com/ntua/TL21-99/blob/v1.0.0/src/commands/admin.js)_

@@ -4,59 +4,57 @@ const {
   date_format,
   date_greater_or_equal,
 } = require("./utilities/date_functions");
-const passes_model = require("../models/passes_model.js");
-const { Visitor } = require("../models/visitor");
+const converter = require("json-2-csv");
+const time_logger = require("./utilities/time_logger");
 const { providerVerification } = require("./utilities/url_param_ver.js");
 
-const time_logger = require("./utilities/time_logger");
-const converter = require("json-2-csv");
+const passes_model = require("../../backend/models/passes_model.js");
 
 router.get(
   "/:op1_ID/:op2_ID/:date_from/:date_to",
   time_logger,
   providerVerification,
   async (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     if (!ProvidersExist || PeriodFrom > PeriodTo || !Time_validation) {
       res.sendStatus(400);
       return;
     }
     const { op1_ID, op2_ID, date_from, date_to } = req.params;
+    let PassesCost = 0;
     const passes = await passes_model.find({});
-    const PassesAnal = passes.filter(
-      (pass) =>
-        op1_ID === pass.stationRef.substring(0, 2) &&
-        op2_ID === pass.hn &&
-        date_greater_or_equal(pass.timestamp, PeriodFrom) &&
-        date_greater_or_equal(PeriodTo, pass.timestamp)
-    );
+    const PassesAnal = passes
+      .filter(
+        (pass) =>
+          op1_ID === pass.stationRef.substring(0, 2) &&
+          op2_ID === pass.hn &&
+          date_greater_or_equal(pass.timestamp, PeriodFrom) &&
+          date_greater_or_equal(PeriodTo, pass.timestamp)
+      )
+      .map((pass) => {
+        const { charge } = pass;
+        Charge = Number(charge);
+        PassesCost += Charge;
+        return {
+          Charge,
+        };
+      });
+    PassesCost = Number(PassesCost.toFixed(2));
 
-    const PassesList = PassesAnal.map((pass, index) => {
-      const { passID, timestamp, vehicleRef, hn, charge } = pass;
-      PassIndex = index + 1;
-      PassTimeStamp = date_format(timestamp);
-      VehicleID = vehicleRef;
-      TagProvider = hn;
-
-      Charge = Number(charge);
-      return {
-        PassIndex,
-        passID,
-        PassTimeStamp,
-        VehicleID,
-        TagProvider,
-        Charge,
-      };
-    });
     const NumberOfPasses = Object.keys(PassesAnal).length;
-    let outJson = new Visitor(
+    const outJson = {
       op1_ID,
       op2_ID,
       RequestTimestamp,
       PeriodFrom,
       PeriodTo,
       NumberOfPasses,
-      PassesList
-    );
+      PassesCost,
+    };
 
     let stat = 200;
     if (NumberOfPasses === 0) {

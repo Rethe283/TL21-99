@@ -7,14 +7,20 @@ const {
 const converter = require("json-2-csv");
 const time_logger = require("./utilities/time_logger");
 const { providerVerification } = require("./utilities/url_param_ver.js");
-//danger
-const passes_model = require("../models/passes_model.js");
+
+const passes_model = require("../../backend/models/passes_model.js");
+const { message_settlement } = require("./utilities/settlementhelper");
 //danger
 router.get(
   "/:op1_ID/:op2_ID/:date_from/:date_to",
   time_logger,
   providerVerification,
   async (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     if (!ProvidersExist || PeriodFrom > PeriodTo || !Time_validation) {
       res.sendStatus(400);
       return;
@@ -38,32 +44,46 @@ router.get(
           Charge,
         };
       });
-    PassesCost = Number(PassesCost.toFixed(2));
+    PassesCost = PassesCost.toFixed(2);
+    let PassesCost2 = 0;
+    const PassesAnal2 = passes
+      .filter(
+        (pass) =>
+          op2_ID === pass.stationRef.substring(0, 2) &&
+          op1_ID === pass.hn &&
+          date_greater_or_equal(pass.timestamp, PeriodFrom) &&
+          date_greater_or_equal(PeriodTo, pass.timestamp)
+      )
+      .map((pass) => {
+        const { charge } = pass;
+        Charge = Number(charge);
+        PassesCost2 += Charge;
+        return {
+          Charge,
+        };
+      });
+    PassesCost2 = PassesCost2.toFixed(2);
 
-    const NumberOfPasses = Object.keys(PassesAnal).length;
-    const outJson = {
+    let Financial_Settlement = message_settlement(
+      PassesCost,
+      PassesCost2,
       op1_ID,
-      op2_ID,
-      RequestTimestamp,
+      op2_ID
+    );
+    let outJson = {
       PeriodFrom,
       PeriodTo,
-      NumberOfPasses,
-      PassesCost,
+      Financial_Settlement,
     };
-
-    let stat = 200;
-    if (NumberOfPasses === 0) {
-      stat = 402;
-    }
     if (req.query.format === "csv") {
       converter.json2csv(outJson, function (err, csv) {
         if (err) {
           throw err;
         }
-        return res.status(stat).send(csv);
+        return res.status(200).send(csv);
       });
     } else {
-      res.status(stat).send(outJson);
+      res.status(200).json(outJson);
     }
   }
 );

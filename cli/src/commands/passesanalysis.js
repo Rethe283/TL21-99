@@ -1,6 +1,3 @@
-/* eslint-disable unicorn/filename-case */
-/* eslint-disable no-console */
-/* eslint-disable node/no-unpublished-require */
 const {Command, flags} = require('@oclif/command')
 
 const https = require('https')
@@ -14,12 +11,12 @@ class passesanalysis extends Command {
   async run() {
     try {
       const {flags} = this.parse(passesanalysis)
-      //axios.defaults.headers.common['X-OBSERVATORY-AUTH'] = flags.apikey
       let status
+      process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
       if (flags.format === 'csv') {
-        status = await axios.get(`http://localhost:9130/interoperability/api/PassesAnalysis/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}/?format=csv`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/PassesAnalysis/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}/?format=csv`)
       } else {
-        status = await axios.get(`http://localhost:9130/interoperability/api/PassesAnalysis/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}`)
+        status = await axios.get(`https://localhost:9130/interoperability/api/PassesAnalysis/${flags.op1}/${flags.op2}/${flags.datefrom}/${flags.dateto}`)
       }
       console.log(status.data)
     } catch (error) {
@@ -34,10 +31,6 @@ passesanalysis.flags = {
     required: true,
     default: 'json',
   }),
-  // apikey: flags.string({
-  //   required: true,
-  //   description: 'the api key used for authorization',
-  // }),
   op1: flags.string({
     required: true,
     description: 'the id of the operator where passes happen',

@@ -1,14 +1,10 @@
-/* eslint-disable node/no-missing-require */
-/* eslint-disable no-negated-condition */
-/* eslint-disable no-console */
 const {Command, flags} = require('@oclif/command')
 
 const https = require('https')
 const axios = require('axios')
 const chalk = require('chalk')
-//const fs = require('fs')
 const config = require('config')
-//const FormData = require('form-data')
+
 axios.defaults.httpsAgent = new https.Agent()
 
 class admin extends Command {
@@ -19,10 +15,11 @@ class admin extends Command {
       if (flags.passesupd !== undefined) {
         
         let status
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
         if (flags.format === 'csv') {
-          status = await axios.post(`http://localhost:9130/interoperability/api/admin/PassesUpdate?file=${flags.source}/?format=csv`)
+          status = await axios.post(`https://localhost:9130/interoperability/api/admin/PassesUpdate?file=${flags.source}/?format=csv`)
         } else {
-          status = await axios.post(`http://localhost:9130/interoperability/api/admin/PassesUpdate?file=${flags.source}`)
+          status = await axios.post(`https://localhost:9130/interoperability/api/admin/PassesUpdate?file=${flags.source}`)
         }
         console.log(status.data)
       }
