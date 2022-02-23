@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "installer": "npm install && cd ../backend && npm install && cd ../cli && npm install && cd ../frontend && npm install && cd ../test-cli && npm install",
-    "start": "nodemon index.js && cd ../frontend && npm start"
+    "start": "nodemon index.js"
   },
   "author": "tl21-99",
   "license": "ISC",
